@@ -7,7 +7,11 @@ plugins {
 
 description = "Dataloom is responsible for sending outgoing e-mails from a queue."
 group = "com.kryptnostic"
+
 ext.projectName = "courier"
+ext.scmUrl = 'scm:git:https://github.com/dataloom/courier.git'
+ext.connectionUrl = 'scm:git:https://github.com/dataloom/courier.git'
+ext.developerConnectionUrl = 'scm:git:https://github.com/dataloom/courier.git'
 
 apply from: "https://raw.githubusercontent.com/kryptnostic/gradles/master/kryptnostic.gradle"
 
@@ -26,10 +30,12 @@ dependencies {
     if( project.hasProperty('developmentMode') && project.developmentMode ) {
         logger.quiet(project.name + " using project dependencies.")
         compile project(":rhizome")
+        compile project(":scribe" )
         testCompile( project(path: ":rhizome", configuration: "tests"))
         testCompile( project(path: ":rhizome-client", configuration: "tests"))
     } else {
         logger.quiet(project.name + " using jar dependencies.")
+        compile "com.kryptnostic:scribe:0.0.1-dev"
         compile "com.kryptnostic:rhizome:${rhizome_version}"
         testCompile "com.kryptnostic:rhizome:${rhizome_version}:tests"
         testCompile "com.kryptnostic:rhizome-client:${rhizome_client_version}:tests"
@@ -43,6 +49,30 @@ dependencies {
         exclude module : 'hamcrest'
         exclude module : 'hamcrest-core'
     }
+    
+    /*
+     * GreenMail
+     * http://www.icegreen.com/greenmail/
+     * https://github.com/greenmail-mail-test/greenmail
+     *
+     * A library that provides a simple POP3/IMAP/SMTP mail server, and makes writing unit/integration tests easy for
+     * testing sending/receiving emails against a running mail server.
+     */
+    testCompile "com.icegreen:greenmail:1.4.1"
+    
+    testCompile( "org.mockito:mockito-all:${mockito_version}" ) {
+        exclude module : 'hamcrest'
+        exclude module : 'hamcrest-core'
+    }
+
+    /*
+     * JMustache
+     * http://mustache.github.io/
+     * https://github.com/samskivert/jmustache
+     *
+     * Java implementation of Mustache, a logic-less template system.
+     */
+    compile "com.samskivert:jmustache:${jmustache_version}"
 }
 
 install {
