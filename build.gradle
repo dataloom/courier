@@ -35,7 +35,7 @@ dependencies {
         testCompile( project(path: ":rhizome-client", configuration: "tests"))
     } else {
         logger.quiet(project.name + " using jar dependencies.")
-        compile "com.kryptnostic:scribe:0.0.1-dev"
+        compile "com.kryptnostic:scribe:${scribe_version}"
         compile "com.kryptnostic:rhizome:${rhizome_version}"
         testCompile "com.kryptnostic:rhizome:${rhizome_version}:tests"
         testCompile "com.kryptnostic:rhizome-client:${rhizome_client_version}:tests"
