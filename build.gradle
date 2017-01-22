@@ -24,6 +24,10 @@ dependencies {
     compile 'com.esotericsoftware:reflectasm:1.11.3'
     compile 'org.objenesis:objenesis:2.4'
 
+    compile "javax.mail:javax.mail-api:1.5.6"
+    compile 'com.sun.mail:javax.mail:1.5.6'
+//    compile "javax.mail:mail:1.5.6"
+    compile 'com.sun.mail:all:1.5.6'
 	/*
      * Kryptnostic dependencies
      */
