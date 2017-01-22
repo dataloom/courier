@@ -4,14 +4,13 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-import com.dataloom.mail.config.MailServiceRequirements;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.dataloom.mail.config.MailServiceConfig;
+import com.dataloom.mail.config.MailServiceRequirements;
 import com.dataloom.mail.services.MailRenderer;
 import com.dataloom.mail.services.MailService;
-import com.hazelcast.core.HazelcastInstance;
 import com.kryptnostic.rhizome.configuration.service.ConfigurationService;
 
 /**

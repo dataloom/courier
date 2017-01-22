@@ -1,21 +1,21 @@
 package com.dataloom.mail.services;
 
+import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Async;
+
 import com.dataloom.mail.RenderableEmailRequest;
 import com.dataloom.mail.config.HtmlEmailTemplate;
 import com.dataloom.mail.config.MailServiceConfig;
-import com.dataloom.mail.templates.EmailTemplate;
 import com.hazelcast.core.IQueue;
+
 import jersey.repackaged.com.google.common.base.Preconditions;
 import jodd.mail.Email;
 import jodd.mail.SendMailSession;
 import jodd.mail.SmtpServer;
 import jodd.mail.SmtpSslServer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.Scheduled;
-
-import java.util.Set;
 
 public class MailService {
     private final MailRenderer                   mailRenderer;

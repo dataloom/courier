@@ -1,10 +1,8 @@
-package com.dataloom.mail.shared;
+package com.dataloom.mail.services;
 
 import java.security.Security;
 
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 
 import com.dataloom.mail.config.MailServiceConfig;
 import com.icegreen.greenmail.util.DummySSLSocketFactory;

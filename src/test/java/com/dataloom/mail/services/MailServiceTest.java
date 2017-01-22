@@ -1,19 +1,5 @@
-package com.dataloom.mail.shared;
+package com.dataloom.mail.services;
 
-import com.dataloom.mail.RenderableEmailRequest;
-import com.dataloom.mail.services.MailRenderer;
-import com.dataloom.mail.services.MailService;
-import com.dataloom.mail.templates.EmailTemplate;
-import com.google.common.base.Optional;
-import com.google.common.collect.ImmutableMap;
-import com.hazelcast.core.IQueue;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.mockito.Mockito;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Executor;
@@ -21,11 +7,24 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.mockito.Mockito;
+
+import com.dataloom.mail.RenderableEmailRequest;
+import com.dataloom.mail.templates.EmailTemplate;
+import com.google.common.base.Optional;
+import com.google.common.collect.ImmutableMap;
+import com.hazelcast.core.IQueue;
+
 public class MailServiceTest extends GreenMailTest {
     private static final IQueue<RenderableEmailRequest> emailRequests = Mockito.mock( IQRER.class );
-    private static MailService mailService;
-    private static MailRenderer renderer       = new MailRenderer();
-    private static String       EMAIL_REQUESTS = "EMAIL_REQUESTS";
+    private static MailService                          mailService;
+    private static MailRenderer                         renderer      = new MailRenderer();
 
     @BeforeClass
     public static void beforeClass() throws Exception {
@@ -33,23 +32,24 @@ public class MailServiceTest extends GreenMailTest {
     }
 
     // use for local test only.
-    //    @Test
-    //    public void sendEmailLocalTest() {
-    //        MailServiceConfig realConfig = new MailServiceConfig( "smtp.gmail.com", 465, "courier@kryptnostic.com", "cwqcqbqyjtocehvs" );
-    //        mailService.configureSmtpServer( realConfig );
+    // @Test
+    // public void sendEmailLocalTest() {
+    // MailServiceConfig realConfig = new MailServiceConfig( "smtp.gmail.com", 465, "courier@kryptnostic.com",
+    // "cwqcqbqyjtocehvs" );
+    // mailService.configureSmtpServer( realConfig );
     //
-    //        String[] toAddresses = new String[] { "Yao <yao@kryptnostic.com>" };
-    //        // construct Gravatar
+    // String[] toAddresses = new String[] { "Yao <yao@kryptnostic.com>" };
+    // // construct Gravatar
     //
-    //        // construct RenderableEmailRequest
+    // // construct RenderableEmailRequest
     //
-    //        Mockito.when( emailRequests.poll() )
-    //            .thenReturn( emailRequest )
-    //            .thenReturn( null );
+    // Mockito.when( emailRequests.poll() )
+    // .thenReturn( emailRequest )
+    // .thenReturn( null );
     //
-    //        mailService.processEmailRequestsQueue();
+    // mailService.processEmailRequestsQueue();
     //
-    //    }
+    // }
 
     @Test
     public void sendEmailTest() throws MessagingException, InterruptedException {
@@ -105,13 +105,13 @@ public class MailServiceTest extends GreenMailTest {
             Assert.assertEquals( 1, email.getHeader( "To" ).length );
             // For efficiency, I update the sendEmail method to spool out all emails through same session.
             // So we cannot guarantee the receiving order.
-            //Assert.assertEquals( toAddresses[ i ], email.getHeader( "To" )[ 0 ] );
+            // Assert.assertEquals( toAddresses[ i ], email.getHeader( "To" )[ 0 ] );
         }
 
     }
 
     @Test(
-            expected = NullPointerException.class )
+        expected = NullPointerException.class )
     public void testBadRequest_NullEmailRequest() throws IOException {
         mailService.sendEmailAfterRendering( null, null );
     }
