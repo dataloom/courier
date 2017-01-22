@@ -1,0 +1,35 @@
+{{>mail/templates/shared/header.mustache}}
+
+<table class="body-wrap" bgcolor="#f6f6f6" style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; width: 100%; margin: 0; padding: 20px;">
+  <tr style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
+    <td style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;"></td>
+    <td class="container" bgcolor="white" style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; clear: both !important; display: block !important; max-width: 600px !important; margin: 0 auto; padding: 20px; border: 1px solid #f0f0f0; height: 580px; background-image: url('https://www.kryptnostic.com/assets/email_bkg.png')">
+      <!-- content -->
+      <div class="content" style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; display: block; max-width: 600px; margin: 0 auto; padding: 0;">
+        <table style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; width: 100%; margin: 0; padding: 0;">
+          <tr style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
+            <td style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
+              <div>
+                <img style="height: 54px; width: 250px; margin: auto; padding-top: 30px; display: block;" src="https://www.kryptnostic.com/assets/confirm_logo.png">
+              </div>
+              <p style="font-family: 'Lato', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 16px; line-height: 1.2em; color: rgb(237,241,244); font-weight: 200; margin: 50px 0 50px 50px; padding: 0;">Hi {{name}},</p>
+              <p style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; color: rgb(237,241,244); font-size: 16px; line-height: 1.6em; font-weight: normal; margin: 20px 0 0 50px; padding: 0;">Thanks for joining Kodex! Click and confirm that you want to sign in to Kodex. This link will expire in 48 hours and can only be used once.</p>
+              <p></p>
+              <!-- button -->
+              <table class="btn-primary" cellpadding="0" cellspacing="0" border="0" style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; width: auto !important; margin: 0 auto; padding: 40px 0 0 0;">
+                <tr style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
+                  <td style="font-family: 'Lato', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 14px; line-height: 1.6em; border-radius: 25px; text-align: center; vertical-align: top; background: rgb(69,109,180); margin: 0; padding: 0;" align="center" valign="top">
+                    <a href="{{confirmation-url}}" style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 2; color: #ffffff; border-radius: 3px; display: inline-block; cursor: pointer; text-decoration: none; margin: 0; padding: 0; border-color: rgb(69,109,180); border-style: solid; border-width: 10px 20px; ">Confirm Email</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; color: rgb(186,186,186); font-size: 14px; line-height: 1.6em; font-weight: normal; margin: 20px 0 0 0; padding: 0; text-align: center;">Or <a style="font-family: 'Lato', 'Helvetica', Helvetica, Arial, sans-serif; display: block; font-size: 100%; line-height: 2; color: #ffffff; border-radius: 3px; cursor: pointer; text-decoration: none; margin: 0 auto; padding: 0; text-align: center; text-decoration: underline;" href="{{signin-url}}">Sign In</a></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+
+{{>mail/templates/shared/footer.mustache}}

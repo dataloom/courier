@@ -1,0 +1,20 @@
+#
+# Rhizome Configuration
+#
+
+# Set to false to disable persistence
+enable-persistence: false
+session-clustering-enabled: false
+
+cassandra:
+    keyspace: "kryptnostic"
+    replication-factor: 2
+    seed-nodes:
+        - "cassandra"
+
+hazelcast:
+    server: false
+    group: "localv2"
+    password: "paynoattentiontothemanbehindthecurtain"
+    seed-nodes:
+        - "hazelcast-server"
