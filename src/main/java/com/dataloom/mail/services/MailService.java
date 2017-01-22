@@ -63,7 +63,7 @@ public class MailService {
     }
 
     @Async
-    static void sendEmailAfterRendering( RenderableEmailRequest emailRequest, SendMailSession session ) {
+    void sendEmailAfterRendering( RenderableEmailRequest emailRequest, SendMailSession session ) {
         Set<Email> emailSet = renderEmail( emailRequest );
         Preconditions.checkNotNull( emailSet, "Email cannot be null." );
         for ( Email email : emailSet ) {
