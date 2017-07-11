@@ -31,10 +31,10 @@ public final class MailServiceConfig implements Configuration {
 
     protected static ConfigurationKey key                 = new SimpleConfigurationKey( "mail-service-config.yaml" );
 
-    protected static final String     SMPTP_HOST_PROPERTY = "smtp-host";
-    protected static final String     SMTP_PORT_PROPERTY  = "smtp-port";
-    protected static final String     USERNAME_PROPERTY   = "username";
-    protected static final String     PASSWORD_PROPERTY   = "password";
+    protected static final String SMTP_HOST_PROPERTY = "smtp-host";
+    protected static final String SMTP_PORT_PROPERTY = "smtp-port";
+    protected static final String USERNAME_PROPERTY  = "username";
+    protected static final String PASSWORD_PROPERTY  = "password";
 
     protected final String            smtpHost;
     protected final int               smtpPort;
@@ -43,7 +43,7 @@ public final class MailServiceConfig implements Configuration {
 
     @JsonCreator
     public MailServiceConfig(
-            @JsonProperty( SMPTP_HOST_PROPERTY ) String smtpHost,
+            @JsonProperty( SMTP_HOST_PROPERTY ) String smtpHost,
             @JsonProperty( SMTP_PORT_PROPERTY ) int smtpPort,
             @JsonProperty( USERNAME_PROPERTY ) String username,
             @JsonProperty( PASSWORD_PROPERTY ) String password) {
@@ -58,7 +58,7 @@ public final class MailServiceConfig implements Configuration {
         this.password = password;
     }
 
-    @JsonProperty( SMPTP_HOST_PROPERTY )
+    @JsonProperty( SMTP_HOST_PROPERTY )
     public String getSmtpHost() {
         return smtpHost;
     }
