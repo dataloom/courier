@@ -27,6 +27,7 @@ import com.openlattice.mail.config.HtmlEmailTemplate;
 import com.openlattice.mail.config.MailServiceConfig;
 import java.util.Set;
 import jodd.mail.Email;
+import jodd.mail.MailException;
 import jodd.mail.SendMailSession;
 import jodd.mail.SmtpServer;
 import jodd.mail.SmtpSslServer;
@@ -93,10 +94,16 @@ public class MailService {
      * By design under heavy load (not all emails rendered within 15 seconds) this will start dedicating more and more
      * threads to rendering outgoing e-mails queue.
      */
-    @Scheduled( fixedRate = 30000 )
+    @Scheduled( fixedRate = 30_000 )
     public void processEmailRequestsQueue() {
         SendMailSession session = smtpServer.createSession();
-        session.open();
+        try {
+            session.open();
+        } catch ( MailException ex ) {
+            logger.error( "Failed to open a mail session " + ex.getMessage() );
+            session.close();
+            return;
+        }
 
         while ( !emailRequests.isEmpty() ) {
             RenderableEmailRequest emailRequest = null;
